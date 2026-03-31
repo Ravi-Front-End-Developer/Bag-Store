@@ -1,0 +1,292 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+.heading1 {
+  color: var(--ion-text-color-step-950);
+}
+
+ion-list {
+  background: transparent !important;
+}
+
+// DIMENSIONS
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.h-25 {
+  height: 25%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.h-75 {
+  height: 75%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.h-25 {
+  height: 25%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.h-75 {
+  height: 75%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+// PADDINGS & MARGINS
+
+.padright-5 {
+  padding-right: 5%;
+}
+
+.pad-0 {
+  padding: 0%;
+}
+
+.padTop-5 {
+  padding-top: 5%;
+}
+
+.mar-0 {
+  margin: 0%;
+}
+
+.mar-5 {
+  margin: 5%;
+}
+
+// CHECKBOXES
+
+ion-checkbox {
+  --size: 32px;
+  --checkbox-background-checked: var(--ion-background-color-step-950);
+}
+
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid var(--ion-background-color-step-950);
+}
+
+// ION SEGMENT
+.segment-container {
+  height: 50px;
+  padding: 1%;
+  --background: transparent;
+
+  ion-segment-button {
+    --indicator-color: var(--ion-text-color-step-600);
+  }
+}
+
+// COMMON INPUTS
+.form-container {
+  background: #ffffff;
+  // This creates the curve
+  border-radius: 40px 40px 0 0;
+  // Pulls the card up to overlap the orange
+  min-height: 100%;
+  padding: 30px 20px;
+
+  .form-inputs,
+  .items {
+    padding: 2% 0%;
+  }
+
+  .items {
+    --background: transparent;
+    --padding-start: 0;
+  }
+
+  ion-input {
+    --border-radius: 12px; // Matches the rounded UI in your screenshot
+    --border-width: 1px;
+    --border-color: #e0e0e0;
+    margin-top: 8px;
+  }
+
+  .btns {
+    --background: var(--ion-background-color-step-950);
+  }
+}
+
+// COMMMON RADIO
+ion-radio {
+  --border-radius: 4px;
+  --inner-border-radius: 4px;
+
+  --color: #ddd;
+  --color-checked: var(--ion-background-color-step-950);
+}
+
+ion-radio.ios::part(container) {
+  width: 20px;
+  height: 20px;
+
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.radio-checked.ios::part(container) {
+  border-color: var(--ion-background-color-step-950);
+}
+
+// .form-inputs,
+// .items {
+//   padding: 2% 0%;
+// }
+
+// .items {
+//   --background: transparent;
+//   --padding-start: 0;
+// }
+
+// ion-input {
+//   --border-radius: 12px; // Matches the rounded UI in your screenshot
+//   --border-width: 1px;
+//   --border-color: #e0e0e0;
+//   margin-top: 8px;
+// }
+
+// .custom-outline-item {
+//   // 1. Remove item-specific background and padding that clips the outline
+//   --background: transparent;
+//   --inner-padding-end: 0;
+//   --padding-start: 0;
+//   --padding-end: 0;
+//   --padding-top: 8px;
+//   --padding-bottom: 8px;
+
+//   margin-bottom: 10px;
+
+//   ion-input {
+//     // 2. Set the height and radius for the outline box
+//     min-height: 56px;
+//     --border-radius: 12px;
+
+//     // 3. Ensure the border is visible
+//     --border-color: var(--ion-color-medium);
+//     --border-width: 1px;
+//     --border-style: solid;
+
+//     // 4. Adjust the floating label color/position if needed
+//     --label-color-focused: var(--ion-color-primary);
+//   }
+// }
+
+// PRIMARY TITLE
+.primaryTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10% 0% 0% 0%;
+  padding: 0%;
+}
+
+.btns {
+  --background: var(--ion-background-color-step-950);
+}
+
+.toolbar-style {
+  --background: var(--ion-background-color-step-950);
+  --color: var(--ion-background-color-step-50);
+
+  .cartIcon {
+    color: var(--ion-background-color-step-50) !important;
+  }
+}
+
+// COMMON
+.whiteBg {
+  background: white;
+}
+
+.whiteText {
+  color: var(--ion-background-color-step-50) !important;
+  --color: var(--ion-background-color-step-50) !important;
+}
+
+.font-size12REM {
+  font-size: 1.2rem !important;
+}
+
+.custom-toast {
+  --background: var(--ion-background-color-step-950);
+  --color: var(--ion-text-color-step-950);
+  font-weight: 500;
+}

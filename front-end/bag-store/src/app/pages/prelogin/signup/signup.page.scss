@@ -1,0 +1,107 @@
+ion-content {
+  --background: url("/assets/images/prelogin/signupbg.jpg") no-repeat center
+    center / cover;
+}
+
+.container {
+  padding: 5%; /* Add some padding so your text isn't touching the edges */
+}
+
+// .form-container {
+//   background: #ffffff;
+//   // This creates the curve
+//   border-radius: 40px 40px 0 0;
+//   // Pulls the card up to overlap the orange
+//   min-height: 100%;
+//   padding: 30px 20px;
+
+//   .form-inputs,
+//   .items {
+//     padding: 2% 0%;
+//   }
+
+//   .items {
+//     --background: transparent;
+//     --padding-start: 0;
+//   }
+
+//   ion-input {
+//     --border-radius: 12px; // Matches the rounded UI in your screenshot
+//     --border-width: 1px;
+//     --border-color: #e0e0e0;
+//     margin-top: 8px;
+//   }
+
+//   .btns {
+//     --background: var(--ion-background-color-step-950);
+//   }
+// }
+
+// Divider Line
+.divider {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--ion-text-color-step-400);
+    z-index: 1;
+  }
+
+  span {
+    background: white;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+// Social Buttons
+.social-grid {
+  display: flex;
+  gap: 15px;
+
+  .social-btn {
+    flex: 1;
+    --background: var(--ion-text-color-step-950);
+    --border-radius: 25px;
+    --color: #000;
+    font-weight: 500;
+    height: 55px;
+
+    img {
+      width: 20px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.lottie-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  background-color: #ffffff; // Match your splash background color
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .lottie {
+    width: 100%;
+    height: 100%;
+    // This ensures the animation fills the space without distortion
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

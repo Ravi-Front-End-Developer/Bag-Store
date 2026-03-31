@@ -1,0 +1,78 @@
+<!-- <ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start">
+      <ion-back-button class="whiteText"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Products List </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon
+          class="cartIcon"
+          name="person-circle-sharp"
+          slot="icon-only"
+        ></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToCart()">
+        <ion-icon
+          class="cartIcon"
+          name="cart-outline"
+          slot="icon-only"
+        ></ion-icon>
+        <ion-badge color="danger"
+          >{{this.productService.cartCount()}}</ion-badge
+        >
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<app-header
+  [cartCount]="productService.cartCount()"
+  [backBtn]="true"
+  [cartBtn]="true"
+  [profileBtn]="true"
+  [title]="'Products List'"
+></app-header>
+
+<ion-content class="ion-padding">
+  <div class="plant-grid" *ngIf="products.length > 0">
+    <div class="plant-card" *ngFor="let item of products">
+      <div class="image-wrapper">
+        <button class="cart-btn" (click)="addToCart(item)">
+          <ion-icon name="cart-outline"></ion-icon>
+        </button>
+        <img
+          [src]="item?.image"
+          class="plant-img"
+          (click)="goToDetails(item)"
+        />
+        <button class="favorite-btn">
+          <ion-icon name="heart"></ion-icon>
+        </button>
+        <button class="edit-btn" (click)="goToEditPage(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </div>
+
+      <div class="details">
+        <h3 class="name" (click)="goToDetails(item)">{{ item?.name }}</h3>
+        <div
+          class="ion-display-flex ion-justify-content-between"
+          (click)="goToDetails(item)"
+        >
+          <p class="price"><s>${{ item?.price }}</s></p>
+          <p class="price">${{ (item?.price ?? 0) - (item?.discount ?? 0) }}</p>
+        </div>
+        <!-- <div class="add-to-cart w-100">
+          <ion-button
+            (click)="addToCart(item)"
+            class="addToCartBtn btns w-100"
+            name="add-outline"
+          >
+            Add To Cart
+          </ion-button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</ion-content>

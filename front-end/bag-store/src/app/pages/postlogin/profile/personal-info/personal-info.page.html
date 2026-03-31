@@ -1,0 +1,217 @@
+<ion-content class="profile-page">
+  <div class="header-section">
+    <div class="top-bar">
+      <ion-back-button defaultHref="/" color="light"></ion-back-button>
+      <ion-title color="light">Profile</ion-title>
+      <ion-button fill="clear" color="light">
+        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="user-info">
+      <div class="avatar-wrapper">
+        <img
+          src="https://dummyjson.com/image/400x200?type=webp&text=I+am+a+webp+image"
+          alt="User Avatar"
+        />
+        <div class="edit-icon">
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+      </div>
+      <h2>Ravi Ghorla</h2>
+      <p>+91 9876543210</p>
+    </div>
+  </div>
+
+  <div class="account-card form-container">
+    <h3>Personal Information</h3>
+    <ion-list class="form-inputs">
+      <!-- FIRST NAME -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter First Name"
+          errorText="Invalid first name"
+        >
+          <div slot="label">
+            First Name <ion-text color="danger">*</ion-text>
+          </div>
+        </ion-input>
+      </ion-item>
+
+      <!-- LAST NAME -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Last Name"
+          errorText="Invalid last name"
+        >
+          <div slot="label">
+            Last Name <ion-text color="danger">*</ion-text>
+          </div>
+        </ion-input>
+      </ion-item>
+
+      <!-- AGE -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Age"
+          errorText="Invalid Age"
+        >
+          <div slot="label">Age <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- EMAIL -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Email"
+          errorText="Invalid email"
+        >
+          <div slot="label">Email <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- PASSWORD -->
+      <!-- <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Password"
+          errorText="Invalid password"
+          type="password"
+        >
+          <div slot="label">Password <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item> -->
+
+      <!-- RE-PASSWORD -->
+      <!-- <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Re-Password"
+          errorText="Invalid Re-password"
+          type="password"
+        >
+          <div slot="label">
+            Re-Password <ion-text color="danger">*</ion-text>
+          </div>
+        </ion-input>
+      </ion-item> -->
+
+      <!-- MOBILE -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Mobile"
+          errorText="Invalid Mobile"
+        >
+          <div slot="label">Mobile <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- ADDRESS -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Flat/House/building name"
+          errorText="Invalid Address"
+        >
+          <div slot="label">Address <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- GENDER -->
+      <div class="padTop-5">
+        <ion-label>Gender<ion-text color="danger"> *</ion-text></ion-label>
+        <div class="ion-padding">
+          <ion-radio-group value="start" errorText="Field is required">
+            <ion-item lines="none" class="items">
+              <ion-radio
+                value="start"
+                justify="space-between"
+                aria-label="Custom checkbox"
+                >Male</ion-radio
+              >
+            </ion-item>
+            <ion-item lines="none" class="items">
+              <ion-radio
+                value="space-between"
+                justify="space-between"
+                aria-label="Custom checkbox"
+                >Female</ion-radio
+              >
+            </ion-item>
+          </ion-radio-group>
+        </div>
+      </div>
+
+      <!-- CITY -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter City"
+          errorText="Invalid City"
+        >
+          <div slot="label">City <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- STATE -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter State"
+          errorText="Invalid State"
+        >
+          <div slot="label">State <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- ZIP CODE -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Zip Code"
+          errorText="Invalid Zip Code"
+        >
+          <div slot="label">Zip Code <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- COUNTRY -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Country"
+          errorText="Invalid Country"
+        >
+          <div slot="label">Country <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- LABEL -->
+      <ion-item lines="none" class="items">
+        <ion-input
+          labelPlacement="floating"
+          placeholder="Enter Label"
+          errorText="Invalid Label"
+        >
+          <div slot="label">Label <ion-text color="danger">*</ion-text></div>
+        </ion-input>
+      </ion-item>
+
+      <!-- IS DEFAULT -->
+      <ion-item lines="none" class="items">
+        <ion-checkbox labelPlacement="end">
+          <ion-label>Make as default address</ion-label>
+        </ion-checkbox>
+      </ion-item>
+
+      <div class="w-100 ion-justify-content-center ion-display-flex">
+        <ion-button class="btns w-50">Update</ion-button>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

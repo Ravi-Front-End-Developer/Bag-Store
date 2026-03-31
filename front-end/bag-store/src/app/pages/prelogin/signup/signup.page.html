@@ -1,0 +1,202 @@
+<ion-content [fullscreen]="true" class="ion-no-padding">
+  <div class="lottie-container" *ngIf="isSplashScreenActive">
+    <ng-lottie class="lottie" [options]="options" (complete)="onAnimationComplete()" (animationCreated)="animationCreated($event)"></ng-lottie>
+  </div>
+
+  <div class="container">
+    <h1>Bag Store</h1>
+    <p>Join us today and start enjoying the best deals on bags</p>
+  </div>
+
+  <div class="form-container">
+    <ion-segment
+      [value]="selectedSegment()"
+      (ionChange)="getSelectedSegment($event)"
+      class="segment-container"
+    >
+      <ion-segment-button value="login" content-id="login">
+        <ion-label>Log In</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup" content-id="signup">
+        <ion-label>Sign Up</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-segment-view>
+      <!-- LOGIN -->
+      <ion-segment-content id="login">
+        <div [formGroup]="loginForm">
+          <ion-list class="form-inputs">
+            <!-- EMAIL -->
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Enter Email"
+                errorText="Invalid email"
+                formControlName="email"
+              >
+                <div slot="label">
+                  Email <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+
+            <!-- PASSWORD -->
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Enter Password"
+                errorText="Invalid password"
+                type="password"
+                formControlName="password"
+              >
+                <div slot="label">
+                  Password <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+            <div class="w-100 ion-justify-content-center ion-display-flex">
+              <ion-button (click)="login()" class="btns w-50">Login</ion-button>
+            </div>
+
+            <div
+              class="ion-justify-content-between ion-align-items-center ion-display-flex"
+            >
+              <ion-checkbox labelPlacement="end">Remember me</ion-checkbox>
+              <p>Fotgot password?</p>
+            </div>
+          </ion-list>
+        </div>
+      </ion-segment-content>
+      <!-- SIGN UP -->
+      <ion-segment-content id="signup">
+        <div [formGroup]="signupForm">
+          <ion-list class="form-inputs">
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Enter Name"
+                formControlName="fullname"
+                errorText="Invalid name"
+              >
+                <div slot="label">
+                  Name <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+
+            <!-- EMAIL -->
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Enter Email"
+                formControlName="email"
+                errorText="Invalid email"
+              >
+                <div slot="label">
+                  Email <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+
+            <!-- PASSWORD -->
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Enter Password"
+                formControlName="password"
+                errorText="Invalid password"
+              >
+                <div slot="label">
+                  Password <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="items">
+              <ion-checkbox labelPlacement="end" formControlName="role" (ionChange)="isAdminTicket($event)">
+                <ion-label>If you want to be registered as an Admin, kindly tick here</ion-label>
+              </ion-checkbox>
+            </ion-item>
+            <div class="w-100 ion-justify-content-center ion-display-flex">
+              <ion-button (click)="signUp()" class="btns w-50"
+                >Sign Up</ion-button
+              >
+            </div>
+          </ion-list>
+        </div>
+      </ion-segment-content>
+    </ion-segment-view>
+
+    <div class="divider">
+      <span>Or continue with</span>
+    </div>
+
+    <div class="social-grid">
+      <ion-button fill="clear" class="social-btn">
+        <ion-icon class="padright-5" name="logo-google"></ion-icon>
+        Google
+      </ion-button>
+      <ion-button fill="clear" class="social-btn">
+        <ion-icon class="padright-5" name="logo-apple"></ion-icon>
+        Apple
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Admin Panel</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-card-subtitle>Total Sales</ion-card-subtitle>
+            <ion-card-title>$4,250</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="stat-card">
+          <ion-card-header>
+            <ion-card-subtitle>Orders</ion-card-subtitle>
+            <ion-card-title>128</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list-header>
+    <ion-label>Inventory Management</ion-label>
+  </ion-list-header>
+
+  <ion-list inset="true">
+    <ion-item button routerLink="/admin/add-product">
+      <ion-icon name="add-circle-outline" slot="start" color="success"></ion-icon>
+      <ion-label>Add New Bag</ion-label>
+    </ion-item>
+    
+    <ion-item button routerLink="/admin/manage-products">
+      <ion-icon name="bag-handle-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Edit / Delete Products</ion-label>
+      <ion-badge slot="end">24</ion-badge>
+    </ion-item>
+
+    <ion-item button routerLink="/admin/orders">
+      <ion-icon name="cart-outline" slot="start" color="warning"></ion-icon>
+      <ion-label>Manage Orders</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content> -->

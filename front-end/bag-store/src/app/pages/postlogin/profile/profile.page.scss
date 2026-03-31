@@ -1,0 +1,45 @@
+// Background of the whole page
+ion-content {
+  --background: #f4f4f4; 
+}
+
+.menu-container {
+  margin: 20px;
+  background: white;
+  border-radius: 25px; // Large rounded corners from your image
+  overflow: hidden; // Ensures items don't bleed over corners
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+
+  ion-list {
+    padding: 0;
+    background: transparent;
+
+    ion-item {
+      --padding-start: 20px;
+      --padding-top: 15px;
+      --padding-bottom: 15px;
+      --inner-padding-end: 20px;
+      --border-color: #f0f0f0;
+      font-family: 'Inter', sans-serif; // Or your preferred font
+
+      ion-icon {
+        font-size: 24px;
+        color: #000;
+        margin-right: 15px;
+      }
+
+      ion-label {
+        font-weight: 500;
+        font-size: 1.1rem;
+        color: #000;
+      }
+    }
+  }
+}
+
+.custom-detail {
+  color: #999;
+  letter-spacing: -2px; // Makes the >>> look connected
+  font-weight: 300;
+  font-size: 1.2rem;
+}

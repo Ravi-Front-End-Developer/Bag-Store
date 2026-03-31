@@ -1,0 +1,181 @@
+ion-toolbar {
+  // --background: transparent;
+  // --color: #000;
+  ion-back-button,
+  ion-button {
+    // --background: #f4f4f4;
+    // --border-radius: 50%;
+    // width: 45px;
+    // height: 45px;
+  }
+}
+ion-back-button {
+  --color: #7cb342; /* Changes the arrow and text color */
+  --icon-font-weight: bold; /* Optional: makes the arrow thicker */
+}
+
+// Page background
+ion-content {
+  --background: #fdfdfd;
+}
+
+.floating-header {
+  position: absolute;
+  top: 15px; // Move down from the status bar
+  left: 20px;
+  right: 20px;
+  height: 50px;
+  z-index: 100; // Ensures it's always on top of the image
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .nav-btn {
+    --background: #f4f4f4; // The light-grey color from your image
+    --color: #000; // Keep the actual icon black
+    --border-radius: 50%; // Perfect circle
+    --padding-start: 0;
+    --padding-end: 0;
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); // Soft shadow for depth
+  }
+}
+
+.product-visual {
+  height: 40vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px; // Gives space for the buttons above the image
+
+  // ... (Keep the rest of your visual CSS, circle, images, etc.) ...
+
+  img
+  {
+    // THIS IS THE MORPHING MAGIC:
+    // We add vendor prefixes (webkit) for maximum browser compatibility.
+  -webkit-mask-image: linear-gradient(to top, transparent 5%, black 100%);
+  mask-image: linear-gradient(
+      to top,
+      transparent 2%,
+      black 15%)
+  }
+}
+
+.info-sheet {
+  background: white;
+  border-radius: 30px 30px 0 0;
+  padding: 20px;
+  margin-top: 25%;
+  min-height: 50vh;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.05);
+
+  .drag-handle {
+    width: 40px;
+    height: 4px;
+    background: #e0e0e0;
+    margin: 0 auto 20px;
+    border-radius: 2px;
+  }
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .subtitle {
+      color: #999;
+      margin: 5px 0;
+    }
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: bold;
+
+      .star-icon
+      {
+        color: var(--ion-background-color-step-950);
+      }
+    }
+  }
+
+  .seller-item {
+    --padding-start: 0;
+    margin: 15px 0;
+    ion-avatar {
+      // width: 50px;
+      // height: 50px;
+      .seller-img{
+        padding: 0% 15%;
+      }
+    }
+    ion-button {
+      --box-shadow: none;
+      --background: #f9f9f9;
+      --color: #000;
+    }
+  }
+
+  .description {
+    color: #666;
+    line-height: 1.5;
+    .read-more {
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .delivery-card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #999;
+    }
+    ion-icon {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.footer-bar {
+  display: flex;
+  background: var(--ion-background-color-step-950);
+  margin: 10px 20px 30px;
+  border-radius: 40px;
+  align-items: center;
+  overflow: hidden;
+
+  .price {
+    flex: 1;
+    text-align: center;
+    color: var(--ion-text-color-step-650);
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .add-btn {
+    --background: white;
+    --color: #000;
+    --border-radius: 35px;
+    margin: 5px;
+    height: 50px;
+    flex: 1.5;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+}

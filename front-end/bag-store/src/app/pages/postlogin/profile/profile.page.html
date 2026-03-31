@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start">
+      <ion-back-button class="whiteText"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Profile </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <div class="menu-container">
+    <ion-list lines="full">
+      <ion-item button detail="false" (click)="goToLink()">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label>Personal Info</ion-label>
+        <div slot="end" class="custom-detail">></div>
+      </ion-item>
+
+      <ion-item button detail="false">
+        <ion-icon name="cube-outline" slot="start"></ion-icon>
+        <ion-label>My Orders</ion-label>
+        <div slot="end" class="custom-detail">></div>
+      </ion-item>
+
+      <ion-item button detail="false">
+        <ion-icon name="card-outline" slot="start"></ion-icon>
+        <ion-label>Payment Info</ion-label>
+        <div slot="end" class="custom-detail">></div>
+      </ion-item>
+
+      <ion-item button detail="false">
+        <ion-icon name="person-add-outline" slot="start"></ion-icon>
+        <ion-label>Invite Friends</ion-label>
+        <div slot="end" class="custom-detail">></div>
+      </ion-item>
+
+      <ion-item button detail="false">
+        <ion-icon name="headset-outline" slot="start"></ion-icon>
+        <ion-label>Help & Support</ion-label>
+        <div slot="end" class="custom-detail">></div>
+      </ion-item>
+
+      <ion-item button detail="false" (click)="logout()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
+        <ion-label>Logout</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,98 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar mode="md">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Current Order</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+<div class="floating-header">
+    <ion-button  fill="clear" class="nav-btn left-btn" (click)="goBack()">
+      <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" class="nav-btn right-btn">
+      <ion-icon slot="icon-only" name="ellipsis-horizontal"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="product-visual">
+    <div class="circle-bg"></div>
+    <img [src]="productDetails.image" alt="Baby Spinach" />
+    <!-- <img src="../assets/images/products/bagPack.jpg" alt="Baby Spinach" /> -->
+  </div>
+
+  <div class="info-sheet">
+    <!-- <div class="drag-handle"></div> -->
+
+    <div class="title-row">
+      <div>
+        <h2>{{productDetails.name}}</h2>
+        <p class="subtitle">{{ productDetails.category }}</p>
+      </div>
+      <div class="rating">
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <span>4.7</span>
+      </div>
+    </div>
+
+    <ion-item lines="none" class="seller-item">
+      <ion-avatar slot="start">
+        <!-- <img src="assets/rax.jpg" /> -->
+         <ion-icon class="w-100 h-100 ion-padding seller-img" name="person-outline"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h3>Rax Watson</h3> <!-- Dealer Name --> 
+        <p>Id 0236983</p> <!-- Dealer Name -->
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button fill="solid" color="light" shape="round">
+          <ion-icon slot="icon-only" name="chatbubble-ellipses"></ion-icon>
+        </ion-button>
+        <ion-button fill="solid" color="light" shape="round">
+          <ion-icon slot="icon-only" name="call"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+
+    <h3>Description</h3>
+    <p class="description">
+      {{ productDetails.description }}
+      <!-- <span class="read-more">Read More</span> -->
+    </p>
+
+    <ion-row class="delivery-row">
+      <ion-col size="6">
+        <div class="delivery-card">
+          <ion-icon name="bicycle-outline"></ion-icon>
+          <div>
+            <p>Delivery Time</p>
+            <strong>30 Min</strong>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="delivery-card">
+          <ion-icon name="cart-outline"></ion-icon>
+          <div>
+            <p>Delivery Type</p>
+            <strong>30 Min</strong>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <div class="footer-bar">
+    <div class="price">Rs {{ productDetails.price }}</div>
+    <ion-button class="add-btn"> Add to Cart </ion-button>
+  </div>
+</ion-footer>

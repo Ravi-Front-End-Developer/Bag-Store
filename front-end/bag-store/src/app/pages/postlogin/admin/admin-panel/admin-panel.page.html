@@ -1,0 +1,46 @@
+<!-- <ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start">
+      <ion-back-button class="whiteText"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Features </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<app-header
+  title="Features"
+  [backBtn]="false"
+  [cartBtn]="false"
+  [profileBtn]="true"
+></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row>
+    <ion-col size="6">
+      <ion-card class="whiteBg" (click)="goToAddProduct()">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            <ion-icon class="addIcon" name="person-add-sharp"></ion-icon
+          ></ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-right">
+          <p class="font-size12REM">Add</p>
+          <p class="font-size12REM">Product</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card class="whiteBg" (click)="goToProductList()">
+        <ion-card-header>
+          <ion-card-title class="ion-text-center">
+            <ion-icon class="addIcon" name="create-sharp"></ion-icon>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-right">
+          <p class="font-size12REM">All</p>
+          <p class="font-size12REM">Products</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

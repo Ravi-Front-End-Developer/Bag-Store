@@ -1,0 +1,32 @@
+src/
+├── app/
+│   ├── core/              # Singleton services, guards, interceptors (global)
+│   │   ├── auth/          # Auth service, interceptor, guard
+│   │   ├── services/      # ApiService, StorageService
+│   │   └── core.module.ts # Import once in AppModule (or provide in bootstrap)
+│   ├── shared/            # Reusable UI components, pipes, directives
+│   │   ├── components/    # Custom buttons, cards, headers
+│   │   ├── directives/    # Custom UI behavior
+│   │   └── pipes/         # Data formatting
+│   ├── features/          # Domain-specific modules (Lazy-loaded)
+│   │   ├── home/          # Home feature (pages, components, models)
+│   │   ├── profile/       # Profile management
+│   │   └── settings/      # App settings
+│   ├── state/             # Optional: Global state (NgRx, Akita, or Signals)
+│   ├── theme/             # Global Ionic styles and variables
+│   └── app-routing.module.ts # Main navigation logic
+├── assets/                # Images, icons, fonts, JSON translations
+├── environments/          # Environment-specific configs (dev, prod)
+└── theme/                 # Global SCSS variables (variable.scss)
+
+
+
+
+commands
+npx capacitor-assets generate --android.  // to genrate icon and static splash( not lottie) ** create assets folder in root directory and add icon.png and splash.png files in it
+npx capacitor-assets generate --ios.  // to genrate icon and static splash( not lottie) ** create assets folder in root directory and add icon.png and splash.png files in it
+
+
+
+
+

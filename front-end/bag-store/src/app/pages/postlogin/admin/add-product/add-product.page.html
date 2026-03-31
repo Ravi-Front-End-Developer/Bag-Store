@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar class="toolbar-style">
+    <ion-buttons slot="start">
+      <ion-back-button class="whiteText"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Add Product </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding upload-page">
+  <ion-card class="upload-area-card">
+    <img *ngIf="uploadedImages" class="uploadImage" [src]="uploadedImages" />
+
+    <label *ngIf="!uploadedImages" for="fileUploader" class="upload-content">
+      <ion-icon name="image-outline"></ion-icon>
+    </label>
+  </ion-card>
+
+  <div class="upload_btn ion-display-flex ion-justify-content-center">
+    <ion-button (click)="onFilesSelected($event)" class="btns w-50 mar-5">
+      Upload
+    </ion-button>
+  </div>
+
+  <ion-grid class="preview-grid">
+    <!-- Product Details -->
+    <div [formGroup]="addProductForm">
+      <ion-row>
+        <p class="primaryTitle">Product Details</p>
+      </ion-row>
+      <ion-list class="form-inputs w-100">
+        <ion-row>
+          <!-- Product Name -->
+          <ion-item lines="none" class="items w-100">
+            <ion-input
+              labelPlacement="floating"
+              placeholder="Product Name"
+              errorText="Invalid Product Name"
+              formControlName="productName"
+            >
+              <div slot="label">
+                Product Name <ion-text color="danger">*</ion-text>
+              </div>
+            </ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <!-- Price -->
+          <ion-col size="6">
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Price"
+                errorText="Invalid Price"
+                formControlName="price"
+              >
+                <div slot="label">
+                  Price <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <!-- Discount Price -->
+            <ion-item lines="none" class="items">
+              <ion-input
+                labelPlacement="floating"
+                placeholder="Discount Price"
+                errorText="Invalid Discount Price"
+                formControlName="discountPrice"
+              >
+                <div slot="label">
+                  Discount Price <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <!-- Description -->
+          <ion-col size="12">
+            <ion-item lines="none" class="items">
+              <ion-textarea
+                label-placement="floating"
+                placeholder="Description"
+                error-text="Invalid Description"
+                fill="none"
+                formControlName="description"
+              >
+                <div slot="label">
+                  Description <ion-text color="danger">*</ion-text>
+                </div>
+              </ion-textarea>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <!-- Category -->
+          <ion-col size="12">
+            <ion-item class="items">
+              <ion-select
+                label-placement="floating"
+                label="Bag Category"
+                formControlName="category"
+                interface="action-sheet"
+              >
+                <ion-select-option
+                  *ngFor="let category of bagCategory"
+                  [value]="category"
+                  >{{category}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-list>
+      <!-- BUTTONS -->
+      <ion-row class="ion-display-flex ion-justify-content-center mar-5">
+        <ion-button
+          (click)="addProduct()"
+          expand="block"
+          fill="solid"
+          shape="round"
+          class="btns"
+        >
+          {{isEditMode ? 'Update' : 'Add'}}
+        </ion-button>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

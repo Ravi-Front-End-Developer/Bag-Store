@@ -1,0 +1,126 @@
+.gray-background {
+  --background: #f8f9fa;
+}
+
+.cart-item {
+  --background: #ffffff;
+  --border-radius: 16px;
+  margin-bottom: 12px;
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  .product-container {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .image-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #f2f2f2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+
+    img {
+      max-width: 80%;
+      object-fit: contain;
+    }
+  }
+
+  .details-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      h2 {
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.1rem;
+      }
+      p {
+        margin: 4px 0;
+        color: #999;
+      }
+      .remove-icon {
+        color: var(--ion-background-color-step-950);
+        font-size: 1.4rem;
+      }
+    }
+
+    .price-quantity-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .price {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #000;
+      }
+    }
+  }
+}
+
+/* Quantity Toggle Styling */
+.quantity-toggle {
+//   background: #f4f4f4;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+
+  ion-button {
+    --padding-start: 4px;
+    --padding-end: 4px;
+    height: 28px;
+    width: 28px;
+    margin: 0;
+    // color: #000;
+
+    &::part(native) {
+      padding: 0;
+    }
+
+    // &:last-child {
+    //   --background: var(--ion-background-color-step-950); // The black plus button
+    //   color: var(--ion-text-color-step-600);
+    //   border-radius: 50%;
+    // }
+  }
+
+  .qty-number {
+    margin: 0 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+}
+
+.removeOutlineIcon{
+      --background: var(--ion-background-color-step-950) !important; // The black plus button
+      --color: var(--ion-text-color-step-600) !important;
+}
+
+.addOutlineIcon{
+      --background: var(--ion-background-color-step-950) !important; // The black plus button
+      --color: var(--ion-text-color-step-600) !important;
+}
+
+
+.emptyCart{
+  height: 100%;
+  width: 100%;
+  .cartIcon{
+    font-size: 4rem;
+  }
+}
