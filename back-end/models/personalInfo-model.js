@@ -10,11 +10,12 @@ const personalInfoSchema = mongoose.Schema(
     firstName: String,
     lastName: String,
     mobileNo: String,
-    profileImage: String,
+    dateOfBirth: String,
     email: String,
     gender: String,
+    profileImage: String,
 
-    // This points to the address the user chose as "Main"
+    // This points to the address the user choose as "Main"
     primaryAddressId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "addressInfo",

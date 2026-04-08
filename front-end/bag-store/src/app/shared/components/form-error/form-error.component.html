@@ -1,0 +1,13 @@
+<!-- 1. Call fieldRef()() to get the FieldState object -->
+<!-- The fieldRef() call is failing because it's trying to call properties on a signal function (the FieldNode) instead of the state object returned by that signal. -->
+@let state = fieldRef()();
+
+<!-- 2. Check if state exists, then call the signals: touched() and invalid() -->
+@if (state && state.touched() && state.invalid()) {
+<div class="error-container">
+  <!-- 3. Call state.errors() to get the array of error objects -->
+  @for (error of state.errors(); track error.kind) {
+  <p class="error-text">{{ error.message || "Invalid input" }}</p>
+  }
+</div>
+}

@@ -16,6 +16,7 @@ const addressSchema = mongoose.Schema({
   state: String,
   zipCode: Number,
   country: String,
+  otherLabel: String,
   isDefault: {
     type: Boolean,
     default: false,

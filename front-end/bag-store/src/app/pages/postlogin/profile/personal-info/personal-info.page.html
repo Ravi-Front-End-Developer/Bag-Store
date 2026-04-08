@@ -1,81 +1,124 @@
 <ion-content class="profile-page">
-  <div class="header-section">
-    <div class="top-bar">
-      <ion-back-button defaultHref="/" color="light"></ion-back-button>
-      <ion-title color="light">Profile</ion-title>
-      <ion-button fill="clear" color="light">
-        <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
-      </ion-button>
-    </div>
-
-    <div class="user-info">
-      <div class="avatar-wrapper">
-        <img
-          src="https://dummyjson.com/image/400x200?type=webp&text=I+am+a+webp+image"
-          alt="User Avatar"
-        />
-        <div class="edit-icon">
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
+  <form (submit)="onSubmit()">
+    <div class="header-section">
+      <div class="top-bar">
+        <ion-back-button defaultHref="/" color="light"></ion-back-button>
+        <ion-title color="light">Profile</ion-title>
+        <ion-button fill="clear" color="light">
+          <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+        </ion-button>
       </div>
-      <h2>Ravi Ghorla</h2>
-      <p>+91 9876543210</p>
+
+      <div class="user-info">
+        <div class="avatar-wrapper">
+          @if (uploadedImages) {
+          <img [src]="uploadedImages" alt="User Avatar" />
+          } @if (!uploadedImages) {
+          <img
+            src="https://dummyjson.com/image/400x200?type=webp&text=I+am+a+webp+image"
+            alt="User Avatar"
+          />
+          }
+          <div class="edit-icon" (click)="onFilesSelected($event)">
+            <ion-icon name="camera-outline"></ion-icon>
+          </div>
+        </div>
+        <h2>Ravi Ghorla</h2>
+      </div>
     </div>
-  </div>
 
-  <div class="account-card form-container">
-    <h3>Personal Information</h3>
-    <ion-list class="form-inputs">
-      <!-- FIRST NAME -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter First Name"
-          errorText="Invalid first name"
+    <div class="account-card form-container">
+      <h3>Personal Information</h3>
+      <ion-list class="form-inputs">
+        <!-- FIRST NAME -->
+        <ion-item lines="none" class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter First Name"
+            errorText="Invalid first name"
+            [formField]="personalInfoForm.firstName"
+          >
+            <div slot="label">
+              First Name <ion-text color="danger">*</ion-text>
+            </div>
+          </ion-input>
+        </ion-item>
+        <!-- <app-form-error [fieldRef]="personalInfoForm.firstName" /> -->
+        @if (personalInfoForm.firstName()) {
+        <app-form-error [fieldRef]="personalInfoForm.firstName" />
+        }
+        <!-- LAST NAME -->
+        <ion-item lines="none" class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter Last Name"
+            errorText="Invalid last name"
+            [formField]="personalInfoForm.lastName"
+          >
+            <div slot="label">
+              Last Name <ion-text color="danger">*</ion-text>
+            </div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.lastName()) {
+        <app-form-error [fieldRef]="personalInfoForm.lastName" />
+        }
+
+        <!-- Date Of Birth -->
+        <ion-item class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Select date"
+            readonly
+            [formField]="personalInfoForm.dateOfBirth"
+            id="open-date-from"
+          >
+            <div slot="label">
+              Date Of Birth <ion-text color="danger">*</ion-text>
+            </div>
+          </ion-input>
+          <!-- <ion-icon name="calendar-outline" class="calendar-icon"></ion-icon> -->
+        </ion-item>
+        @if (personalInfoForm.dateOfBirth()) {
+        <app-form-error [fieldRef]="personalInfoForm.dateOfBirth" />
+        }
+
+        <ion-modal
+          trigger="open-date-from"
+          class="date-modal"
+          cssClass="bottom-end"
         >
-          <div slot="label">
-            First Name <ion-text color="danger">*</ion-text>
-          </div>
-        </ion-input>
-      </ion-item>
+          <ng-template>
+            <ion-datetime
+              color="rose"
+              presentation="date"
+              [max]="maxDate"
+              [preferWheel]="true"
+              showDefaultButtons="true"
+              [value]="unformattedDOB"
+              (ionChange)="onDateChange($event)"
+            >
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
 
-      <!-- LAST NAME -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Last Name"
-          errorText="Invalid last name"
-        >
-          <div slot="label">
-            Last Name <ion-text color="danger">*</ion-text>
-          </div>
-        </ion-input>
-      </ion-item>
+        <!-- EMAIL -->
+        <ion-item class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter Email"
+            [formField]="personalInfoForm.email"
+          >
+            <div slot="label">Email <ion-text color="danger">*</ion-text></div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.email()) {
+        <app-form-error [fieldRef]="personalInfoForm.email" />
+        }
+        <!-- <app-form-error [error]="formErrors()['email']" /> -->
 
-      <!-- AGE -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Age"
-          errorText="Invalid Age"
-        >
-          <div slot="label">Age <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
-
-      <!-- EMAIL -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Email"
-          errorText="Invalid email"
-        >
-          <div slot="label">Email <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
-
-      <!-- PASSWORD -->
-      <!-- <ion-item lines="none" class="items">
+        <!-- PASSWORD -->
+        <!-- <ion-item lines="none" class="items">
         <ion-input
           labelPlacement="floating"
           placeholder="Enter Password"
@@ -86,8 +129,8 @@
         </ion-input>
       </ion-item> -->
 
-      <!-- RE-PASSWORD -->
-      <!-- <ion-item lines="none" class="items">
+        <!-- RE-PASSWORD -->
+        <!-- <ion-item lines="none" class="items">
         <ion-input
           labelPlacement="floating"
           placeholder="Enter Re-Password"
@@ -100,118 +143,183 @@
         </ion-input>
       </ion-item> -->
 
-      <!-- MOBILE -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Mobile"
-          errorText="Invalid Mobile"
-        >
-          <div slot="label">Mobile <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
+        <!-- MOBILE -->
+        <ion-item class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter Mobile"
+            [formField]="personalInfoForm.mobileNo"
+          >
+            <div slot="label">Mobile <ion-text color="danger">*</ion-text></div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.mobileNo()) {
+        <app-form-error [fieldRef]="personalInfoForm.mobileNo" />
+        }
 
-      <!-- ADDRESS -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Flat/House/building name"
-          errorText="Invalid Address"
-        >
-          <div slot="label">Address <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
+        <!-- ADDRESS -->
+        <ion-item lines="none" class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Flat/House/building name"
+            errorText="Invalid Address"
+            [formField]="personalInfoForm.addressLine"
+          >
+            <div slot="label">
+              Address <ion-text color="danger">*</ion-text>
+            </div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.addressLine()) {
+        <app-form-error [fieldRef]="personalInfoForm.addressLine" />
+        }
 
-      <!-- GENDER -->
-      <div class="padTop-5">
-        <ion-label>Gender<ion-text color="danger"> *</ion-text></ion-label>
-        <div class="ion-padding">
-          <ion-radio-group value="start" errorText="Field is required">
-            <ion-item lines="none" class="items">
-              <ion-radio
-                value="start"
-                justify="space-between"
-                aria-label="Custom checkbox"
-                >Male</ion-radio
-              >
-            </ion-item>
-            <ion-item lines="none" class="items">
-              <ion-radio
-                value="space-between"
-                justify="space-between"
-                aria-label="Custom checkbox"
-                >Female</ion-radio
-              >
-            </ion-item>
-          </ion-radio-group>
+        <!-- GENDER -->
+        <ion-item class="items">
+          <ion-select
+            label-placement="floating"
+            label="Gender"
+            [formField]="personalInfoForm.gender"
+            interface="action-sheet"
+          >
+            @for (gender of genders(); track gender) {
+            <ion-select-option [value]="gender">{{ gender }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+        @if (personalInfoForm.gender()) {
+        <app-form-error [fieldRef]="personalInfoForm.gender" />
+        }
+
+        <!-- COUNTRY -->
+        <ion-item class="items">
+          <ion-select
+            label-placement="floating"
+            label="Country"
+            [formField]="personalInfoForm.country"
+            interface="action-sheet"
+          >
+            @for (country of countriesList(); track country.iso2) {
+            <ion-select-option [value]="country.iso2"
+              >{{ country.name }}</ion-select-option
+            >
+            }
+          </ion-select>
+        </ion-item>
+        @if (personalInfoForm.country()) {
+        <app-form-error [fieldRef]="personalInfoForm.country" />
+        }
+
+        <!-- STATE -->
+        <ion-item class="items">
+          <ion-select
+            label-placement="floating"
+            label="State"
+            [formField]="personalInfoForm.state"
+            interface="action-sheet"
+          >
+            @for (state of statesList(); track state.iso2) {
+            <ion-select-option [value]="state.iso2"
+              >{{ state.name }}</ion-select-option
+            >
+            }
+          </ion-select>
+        </ion-item>
+        @if (personalInfoForm.state()) {
+        <app-form-error [fieldRef]="personalInfoForm.state" />
+        }
+
+        <!-- CITY -->
+        <ion-item class="items">
+          <ion-select
+            label-placement="floating"
+            label="City *"
+            [formField]="personalInfoForm.city"
+            interface="action-sheet"
+          >
+            @for (city of citiesList(); track city.iso2) {
+            <ion-select-option [value]="city.iso2"
+              >{{ city.name }}</ion-select-option
+            >
+            }
+          </ion-select>
+        </ion-item>
+        @if (personalInfoForm.city()) {
+        <app-form-error [fieldRef]="personalInfoForm.city" />
+        }
+
+        <!-- ZIP CODE -->
+        <ion-item lines="none" class="items">
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter Zip Code"
+            errorText="Invalid Zip Code"
+            [formField]="personalInfoForm.zipCode"
+          >
+            <div slot="label">
+              Zip Code <ion-text color="danger">*</ion-text>
+            </div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.zipCode()) {
+        <app-form-error [fieldRef]="personalInfoForm.zipCode" />
+        }
+
+        <!-- LABEL -->
+        <div class="padTop-5">
+          <ion-label
+            >Add Address Label<ion-text color="danger"> *</ion-text></ion-label
+          >
+
+          <ion-item lines="none" class="items">
+            @for (label of addresslabels; track $index) {
+            <ion-chip
+              [color]="personalInfoForm.label().value() === label ? 'primary' : 'medium'"
+              (click)="selectLabel(label)"
+            >
+              <ion-label>{{ label }}</ion-label>
+            </ion-chip>
+            }
+          </ion-item>
         </div>
-      </div>
 
-      <!-- CITY -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter City"
-          errorText="Invalid City"
+        <ion-item
+          lines="none"
+          class="items"
+          *ngIf="personalInfoForm.label().value() === 'Other'"
         >
-          <div slot="label">City <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
+          <ion-input
+            labelPlacement="floating"
+            placeholder="Enter Label"
+            [formField]="personalInfoForm.otherLabel"
+          >
+            <div slot="label">Other <ion-text color="danger">*</ion-text></div>
+          </ion-input>
+        </ion-item>
+        @if (personalInfoForm.label().value() === 'Other') {
+        @if (personalInfoForm.otherLabel()) {
+        <app-form-error [fieldRef]="personalInfoForm.otherLabel" />
+        } }
 
-      <!-- STATE -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter State"
-          errorText="Invalid State"
-        >
-          <div slot="label">State <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
+        <!-- IS DEFAULT -->
+        <ion-item lines="none" class="items">
+          <ion-checkbox
+            labelPlacement="end"
+            [formField]="personalInfoForm.isDefault"
+          >
+            <ion-label>Make as default address</ion-label>
+          </ion-checkbox>
+        </ion-item>
 
-      <!-- ZIP CODE -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Zip Code"
-          errorText="Invalid Zip Code"
-        >
-          <div slot="label">Zip Code <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
-
-      <!-- COUNTRY -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Country"
-          errorText="Invalid Country"
-        >
-          <div slot="label">Country <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
-
-      <!-- LABEL -->
-      <ion-item lines="none" class="items">
-        <ion-input
-          labelPlacement="floating"
-          placeholder="Enter Label"
-          errorText="Invalid Label"
-        >
-          <div slot="label">Label <ion-text color="danger">*</ion-text></div>
-        </ion-input>
-      </ion-item>
-
-      <!-- IS DEFAULT -->
-      <ion-item lines="none" class="items">
-        <ion-checkbox labelPlacement="end">
-          <ion-label>Make as default address</ion-label>
-        </ion-checkbox>
-      </ion-item>
-
-      <div class="w-100 ion-justify-content-center ion-display-flex">
-        <ion-button class="btns w-50">Update</ion-button>
-      </div>
-    </ion-list>
-  </div>
+        <div class="w-100 ion-justify-content-center ion-display-flex">
+          <ion-button
+            [disabled]="personalInfoForm().invalid()"
+            type="submit"
+            class="btns w-50"
+            >Update</ion-button
+          >
+        </div>
+      </ion-list>
+    </div>
+  </form>
 </ion-content>

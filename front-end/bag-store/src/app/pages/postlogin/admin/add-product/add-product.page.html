@@ -9,11 +9,13 @@
 
 <ion-content class="ion-padding upload-page">
   <ion-card class="upload-area-card">
-    <img *ngIf="uploadedImages" class="uploadImage" [src]="uploadedImages" />
-
-    <label *ngIf="!uploadedImages" for="fileUploader" class="upload-content">
+    @if (uploadedImages) {
+    <img class="uploadImage" [src]="uploadedImages" />
+    } @if (!uploadedImages) {
+    <label for="fileUploader" class="upload-content">
       <ion-icon name="image-outline"></ion-icon>
     </label>
+    }
   </ion-card>
 
   <div class="upload_btn ion-display-flex ion-justify-content-center">
@@ -107,11 +109,11 @@
                 formControlName="category"
                 interface="action-sheet"
               >
-                <ion-select-option
-                  *ngFor="let category of bagCategory"
-                  [value]="category"
+                @for (category of bagCategory; track category) {
+                <ion-select-option [value]="category"
                   >{{category}}</ion-select-option
                 >
+                }
               </ion-select>
             </ion-item>
           </ion-col>

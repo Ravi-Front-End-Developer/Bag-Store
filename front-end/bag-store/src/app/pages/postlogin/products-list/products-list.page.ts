@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { SHARED_COMPONENTS, SHARED_MODULES } from 'src/app/shared/shared';
 import { addIcons } from 'ionicons';
 import {
@@ -22,7 +22,7 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
   templateUrl: './products-list.page.html',
   styleUrls: ['./products-list.page.scss'],
   standalone: true,
-  imports: [CommonModule, ...SHARED_MODULES, HeaderComponent],
+  imports: [...SHARED_MODULES, HeaderComponent],
 })
 export class ProductsListPage implements OnInit {
   cartCount: any;

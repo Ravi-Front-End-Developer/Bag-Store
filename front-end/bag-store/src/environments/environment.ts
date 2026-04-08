@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   mode: 'dev', // dev , test , prod
+  appBaseUrl: "http://localhost:3000/api",
+  locationBaseURL: 'https://api.countrystatecity.in/v1/countries',
+  locationAPIkey: '1cd475eb53520cdf6c114313ce231b237a96e292947afb3b67240b6a4ea8fcff',
 };
 
 /*

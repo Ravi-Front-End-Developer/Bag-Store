@@ -9,7 +9,7 @@
     text-align: center;
     background-image: url("../../../../../assets/images/profile/personalInfoBg.png"); // Dark green background
     background-size: cover;
-    height: 40%;
+    // height: 40%;
 
     .top-bar {
       display: flex;
@@ -27,20 +27,21 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        border: 4px solid #7cb342; // Light green border
+        border: 4px solid var(--ion-background-color-step-950); // Light green border
         object-fit: cover;
       }
 
       .edit-icon {
         position: absolute;
-        bottom: 5px;
-        right: 10px;
-        background: #e09d5a; // Orange circle
+        bottom: 0px;
+        right: 5px;
+        background: var(--ion-background-color-step-950);
         color: white;
         padding: 5px;
         border-radius: 50%;
-        font-size: 14px;
-        border: 2px solid #0d1e0a;
+        font-size: 20px;
+        border: 2px solid var(--ion-background-color-step-950);
+        height: 35%;
       }
     }
 
@@ -59,6 +60,28 @@
     background: white;
     border-radius: 40px 40px 0 0; // Curve at the top
     padding: 30px 20px;
-    margin-top: -10%; // Pull the card up over the green
+    // margin-top: -10%; // Pull the card up over the green
   }
+}
+
+// Adjusting the Modal to not be full screen
+.date-modal {
+  --height: auto;
+  --width: 90%;
+  --border-radius: 16px;
+  --box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+
+  &::part(content) {
+    border-radius: 16px;
+  }
+}
+
+// dfb
+.user-error {
+  --border-color: var(--ion-color-danger) !important;
+  border-bottom: 1px solid var(--ion-color-danger);
+}
+.error-text {
+  margin-left: 16px;
+  display: block;
 }

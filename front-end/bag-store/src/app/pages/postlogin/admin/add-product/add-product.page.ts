@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   FormControl,
   FormGroup,
@@ -26,7 +26,7 @@ import { ProductsService } from 'src/app/core/services/productsService.service';
   templateUrl: './add-product.page.html',
   styleUrls: ['./add-product.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ...SHARED_MODULES],
+  imports: [FormsModule, ReactiveFormsModule, ...SHARED_MODULES],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ImageService],
 })
@@ -75,6 +75,9 @@ export class AddProductPage implements OnInit {
     this.initAddProductForm();
   }
 
+  /**
+   * Initialize add product form
+   */
   initAddProductForm() {
     this.addProductForm = new FormGroup({
       productName: new FormControl('', Validators.required),
@@ -99,11 +102,6 @@ export class AddProductPage implements OnInit {
    */
   addProduct() {
     if (this.addProductForm.invalid) return;
-
-    // if (this.isEditMode && !this.uploadedImages) {
-    //   this.toastService.presentToast('Please select an image', 'bottom');
-    //   return;
-    // }
 
     this.imageService
       .uploadImage(

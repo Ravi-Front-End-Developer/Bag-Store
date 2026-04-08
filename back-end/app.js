@@ -27,12 +27,14 @@ const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 const ownerRoutes = require("./routes/ownerRoutes");
 const cartRoutes = require("./routes/cartRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 // MIDDLEWARES
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/owners", ownerRoutes);
 app.use("/api/carts", cartRoutes);
+app.use("/api/profile", profileRoutes);
 
 // LISTENING PORT
 app.listen(3000, () => {

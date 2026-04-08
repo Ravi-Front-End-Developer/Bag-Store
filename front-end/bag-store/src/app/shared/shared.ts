@@ -35,9 +35,17 @@ import {
   IonSelect,
   IonRadio,
   IonRadioGroup,
+  IonDatetime,
+  IonDatetimeButton,
+  IonModal,
+  IonPopover,
+  IonChip,
+  IonNote,
 } from '@ionic/angular/standalone';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { FormField } from '@angular/forms/signals';
+import { CommonModule } from '@angular/common';
 
 export const SHARED_MODULES = [
   IonButton,
@@ -78,6 +86,17 @@ export const SHARED_MODULES = [
   IonTextarea,
   IonRadioGroup,
   IonRadio,
+  IonCheckbox,
+  IonDatetime,
+  IonDatetimeButton,
+  IonModal,
+  IonPopover,
+  IonChip,  
+  IonNote,
+  // FORMS
+  FormField,
+  // CommonModule
+  CommonModule
 ] as const;
 
 export const SHARED_COMPONENTS = [HeaderComponent] as const;

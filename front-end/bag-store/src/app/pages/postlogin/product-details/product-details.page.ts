@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
@@ -26,7 +26,7 @@ import { Product } from 'src/app/shared/interfaces/product.interface';
   templateUrl: './product-details.page.html',
   styleUrls: ['./product-details.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ...SHARED_MODULES],
+  imports: [FormsModule, ...SHARED_MODULES],
 })
 export class ProductDetailsPage implements OnInit {
   productId: string = '';

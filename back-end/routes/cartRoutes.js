@@ -5,9 +5,15 @@ const cartModel = require("../models/cart-model");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 
 router.get("/", isLoggedIn, async (req, res, next) => {
+  console.log("-------------req.user-------------");
+  console.log(req.user);
+  console.log("-------------req.user-------------");
   try {
     // 1. Find the user
     const user = await userModel.findOne({ email: req.user.email });
+    console.log("-------------user-------------");
+    console.log(user);
+    console.log("-------------user-------------");
     if (!user) {
       return res.status(404).json({ status: 404, message: "User not found" });
     }
@@ -36,11 +42,11 @@ router.post("/addToCart/:productId", isLoggedIn, async (req, res, next) => {
       if (req.user.cart[itemIndex].quantity === 1) {
         return res.status(200).json({ message: "Item already exists in cart" });
       }
-    //   req.user.cart[itemIndex].quantity += 1;
-    //   await req.user.save();
-    //   res
-    //     .status(200)
-    //     .json({ message: "Item added to cart successfully", user: req.user });
+      //   req.user.cart[itemIndex].quantity += 1;
+      //   await req.user.save();
+      //   res
+      //     .status(200)
+      //     .json({ message: "Item added to cart successfully", user: req.user });
     } else {
       const cart = new cartModel({
         user: req.user._id,
@@ -61,19 +67,6 @@ router.post("/addToCart/:productId", isLoggedIn, async (req, res, next) => {
 
 router.put("/updateCart/:productId", isLoggedIn, async (req, res, next) => {
   try {
-    // console.log("--------------------BODY------------------");
-    // console.log(req.body);
-    // console.log("--------------------BODY------------------");
-    // console.log("--------------------PARAMS------------------");
-    // console.log(req.params);
-    // console.log("--------------------PARAMS------------------");
-    // console.log("--------------------USER------------------");
-    // console.log(req.user);
-    // console.log("--------------------USER------------------");
-    // const productId = req.params.productId;
-    // console.log("--------------------PRODUCT ID------------------");
-    // console.log(productId);
-    // console.log("--------------------PRODUCT ID------------------");
     const user = await userModel.findOne({ email: req.user.email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });

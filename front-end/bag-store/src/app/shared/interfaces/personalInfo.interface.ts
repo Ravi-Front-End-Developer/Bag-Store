@@ -1,16 +1,19 @@
 export interface personalInfoInterface {
+  // Personal Info
   firstName: string;
   lastName: string;
   mobileNo: string;
   email: string;
   gender: string;
-  mobile: string;
-  profilePic: string;
+  profilePic: Blob;
+  dateOfBirth: string;
+  // Address table
   addressLine: string;
   city: string;
   state: string;
-  zipCode: number;
+  zipCode: number | null;
   country: string;
   label: string;
+  otherLabel: string;
   isDefault: boolean;
 }

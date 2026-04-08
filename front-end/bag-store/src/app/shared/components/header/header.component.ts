@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
@@ -21,15 +20,15 @@ import { Router } from '@angular/router';
 import { ToastService } from 'src/app/core/services/toastService.service';
 import { AuthService } from 'src/app/core/services/authService.service';
 // 1. IMPORT SPECIFIC STANDALONE COMPONENTS
-import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
-  IonButtons, 
-  IonBackButton, 
-  IonButton, 
-  IonIcon, 
-  IonBadge 
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonBackButton,
+  IonButton,
+  IonIcon,
+  IonBadge,
 } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-header',
@@ -37,15 +36,14 @@ import {
   styleUrls: ['./header.component.scss'],
   // 2. USE INDIVIDUAL COMPONENTS INSTEAD OF IonicModule
   imports: [
-    CommonModule,
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
-    IonButtons, 
-    IonBackButton, 
-    IonButton, 
-    IonIcon, 
-    IonBadge
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonBackButton,
+    IonButton,
+    IonIcon,
+    IonBadge,
   ],
 })
 export class HeaderComponent implements OnInit {

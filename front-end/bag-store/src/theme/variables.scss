@@ -48,3 +48,20 @@
   --ion-background-color-step-900: #726067;
   --ion-background-color-step-950: #6b575f;
 }
+
+.ion-color-rose {
+  --ion-color-base: var(----ion-text-color-step-450);
+  --ion-color-base-rgb: var(----ion-text-color-step-450-rgb);
+  --ion-color-contrast: var(----ion-text-color-step-450-contrast);
+  --ion-color-contrast-rgb: var(----ion-text-color-step-450-contrast-rgb);
+  --ion-color-shade: var(----ion-text-color-step-450-shade);
+  --ion-color-tint: var(----ion-text-color-step-450-tint);
+}
+
+ion-datetime {
+  --background: #fff1f2;
+  --background-rgb: 255, 241, 242;
+
+  border-radius: 16px;
+  box-shadow: rgba(var(--ion-color-rose-rgb), 0.3) 0px 10px 15px -3px;
+}

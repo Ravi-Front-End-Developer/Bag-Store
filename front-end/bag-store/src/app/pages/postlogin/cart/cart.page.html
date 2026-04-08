@@ -1,10 +1,10 @@
 <!-- <ion-header>
-  <ion-toolbar class="toolbar-style">
-    <ion-buttons slot="start">
-      <ion-back-button class="whiteText"></ion-back-button>
-    </ion-buttons>
-    <ion-title> Cart </ion-title>
-  </ion-toolbar>
+<ion-toolbar class="toolbar-style">
+  <ion-buttons slot="start">
+    <ion-back-button class="whiteText"></ion-back-button>
+  </ion-buttons>
+  <ion-title> Cart </ion-title>
+</ion-toolbar>
 </ion-header> -->
 
 <app-header
@@ -17,12 +17,12 @@
 
 <ion-content class="ion-padding gray-background">
   <ion-list lines="none">
-    <ion-item class="cart-item" *ngFor="let item of cartItems()">
+    @for (item of cartItems(); track item) {
+    <ion-item class="cart-item">
       <div class="product-container">
         <div class="image-wrapper">
           <img [src]="item.productId.image" alt="product" />
         </div>
-
         <div class="details-wrapper">
           <div class="header-row">
             <ion-label>
@@ -37,13 +37,11 @@
             <s>{{ item.productId.price * item.quantity | currency }}</s>
             <p>{{ item.productId.discount * item.quantity | currency }}</p>
           </div>
-
           <div class="price-quantity-row">
             <span class="price">
               Rs {{ ((item.productId.price * item.quantity) -
               (item.productId.discount * item.quantity)) }}
             </span>
-
             <div class="quantity-toggle">
               <ion-button
                 class="removeOutlineIcon"
@@ -65,16 +63,19 @@
         </div>
       </div>
     </ion-item>
+    }
   </ion-list>
+  @if (cartItems().length == 0) {
   <div
-    *ngIf="cartItems().length == 0"
     class="emptyCart ion-display-flex ion-flex-column ion-justify-content-center ion-align-items-center"
   >
     <ion-icon class="cartIcon" name="cart-outline"></ion-icon>
     <ion-label>Your cart is empty</ion-label>
   </div>
+  }
 </ion-content>
-<ion-footer *ngIf="cartItems().length > 0">
+@if (cartItems().length > 0) {
+<ion-footer>
   <ion-toolbar>
     <ion-card>
       <ion-card-content>
@@ -99,3 +100,4 @@
     <ion-button class="w-100 btns" (click)="checkout()"> Checkout </ion-button>
   </ion-toolbar>
 </ion-footer>
+}

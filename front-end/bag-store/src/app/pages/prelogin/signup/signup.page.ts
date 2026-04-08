@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   FormControl,
   FormGroup,
@@ -23,7 +23,6 @@ import { LottieComponent, AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./signup.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     ...SHARED_MODULES,

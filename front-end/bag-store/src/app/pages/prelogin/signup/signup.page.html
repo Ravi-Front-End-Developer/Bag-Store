@@ -1,7 +1,14 @@
 <ion-content [fullscreen]="true" class="ion-no-padding">
-  <div class="lottie-container" *ngIf="isSplashScreenActive">
-    <ng-lottie class="lottie" [options]="options" (complete)="onAnimationComplete()" (animationCreated)="animationCreated($event)"></ng-lottie>
+  @if (isSplashScreenActive) {
+  <div class="lottie-container">
+    <ng-lottie
+      class="lottie"
+      [options]="options"
+      (complete)="onAnimationComplete()"
+      (animationCreated)="animationCreated($event)"
+    ></ng-lottie>
   </div>
+  }
 
   <div class="container">
     <h1>Bag Store</h1>
@@ -113,8 +120,15 @@
             </ion-item>
 
             <ion-item lines="none" class="items">
-              <ion-checkbox labelPlacement="end" formControlName="role" (ionChange)="isAdminTicket($event)">
-                <ion-label>If you want to be registered as an Admin, kindly tick here</ion-label>
+              <ion-checkbox
+                labelPlacement="end"
+                formControlName="role"
+                (ionChange)="isAdminTicket($event)"
+              >
+                <ion-label
+                  >If you want to be registered as an Admin, kindly tick
+                  here</ion-label
+                >
               </ion-checkbox>
             </ion-item>
             <div class="w-100 ion-justify-content-center ion-display-flex">
@@ -143,7 +157,6 @@
     </div>
   </div>
 </ion-content>
-
 
 <!-- <ion-header [translucent]="true">
   <ion-toolbar color="primary">
@@ -187,7 +200,7 @@
       <ion-icon name="add-circle-outline" slot="start" color="success"></ion-icon>
       <ion-label>Add New Bag</ion-label>
     </ion-item>
-    
+
     <ion-item button routerLink="/admin/manage-products">
       <ion-icon name="bag-handle-outline" slot="start" color="primary"></ion-icon>
       <ion-label>Edit / Delete Products</ion-label>

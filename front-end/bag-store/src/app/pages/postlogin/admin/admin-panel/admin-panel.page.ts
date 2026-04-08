@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { createSharp, personAddSharp } from 'ionicons/icons';
@@ -12,7 +12,7 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
   templateUrl: './admin-panel.page.html',
   styleUrls: ['./admin-panel.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ...SHARED_MODULES, HeaderComponent],
+  imports: [FormsModule, ...SHARED_MODULES, HeaderComponent],
 })
 export class AdminPanelPage implements OnInit {
   constructor(private router: Router) {

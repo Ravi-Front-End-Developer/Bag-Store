@@ -12,7 +12,7 @@ export class ImageService {
   imageUrl: string | undefined; // For previewing in HTML
   selectedBlob: Blob | undefined; // For uploading to MongoDB
   constructor(private http: HttpClient) {}
-  async selectAndUpload() {
+  async selectAndUpload(imageRef?: string) {
     // 1. Take or Pick a photo
     try {
       const image = await Camera.getPhoto({
@@ -33,7 +33,12 @@ export class ImageService {
       //   if (result!) {
       //     return this.imageUrl || null;
       //   }
-
+      if (imageRef === 'profilePic') {
+        return {
+          imageUrl: this.imageUrl,
+          selectedBlob: this.selectedBlob,
+        };
+      }
       return this.imageUrl || null;
     } catch (error) {
       console.error('User cancelled or camera failed', error);
@@ -70,7 +75,7 @@ export class ImageService {
     console.log(dataObj);
     const formData = new FormData();
     if (this.selectedBlob) {
-      formData.append('image', this.selectedBlob, `profile_${Date.now()}.jpg`);
+      formData.append('image', this.selectedBlob, `product_${Date.now()}.jpg`);
     }
 
     formData.append('name', dataObj.productName);
@@ -82,7 +87,6 @@ export class ImageService {
     if (isEditMode) {
       formData.append('prodCurrentId', productId);
     }
-    // return true;
     if (isEditMode) {
       return this.http.put(
         `http://localhost:3000/api/products/update/${productId}`,

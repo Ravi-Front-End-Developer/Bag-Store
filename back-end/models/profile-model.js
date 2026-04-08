@@ -17,10 +17,10 @@ const profileSchema = mongoose.Schema({
     ref: "paymentsDetails",
   },
   //
-  ordersId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ordersInfo",
-  },
+  // ordersId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "ordersInfo",
+  // },
 });
 
 module.exports = mongoose.model("profile", profileSchema);

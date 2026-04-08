@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/core/services/authService.service';
 import { Router } from '@angular/router';
 import { catchError, from, switchMap, throwError } from 'rxjs';
 import { ToastService } from '../../services/toastService.service';
+import { environment } from 'src/environments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   let authRequest: HttpRequest<any> = req;
@@ -28,6 +29,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       let authRequest = req;
 
       // 2. Clone the request INSIDE the switchMap
+      if(authRequest.url.includes(environment.locationBaseURL)){
+        return next(authRequest);
+      }
       if (token) {
         authRequest = req.clone({
           setHeaders: {
